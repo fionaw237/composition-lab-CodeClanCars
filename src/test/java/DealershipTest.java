@@ -11,6 +11,7 @@ import org.junit.Test;
 import vehicles.Car;
 import vehicles.ElectricCar;
 import vehicles.HybridCar;
+import vehicles.Vehicle;
 
 import java.util.ArrayList;
 
@@ -30,9 +31,7 @@ public class DealershipTest {
     HybridCar hybridCar2;
     ElectricCar electricCar1;
     ElectricCar electricCar2;
-    ArrayList<Car> cars;
-    ArrayList<ElectricCar> electricCars;
-    ArrayList<HybridCar> hybridCars;
+    ArrayList<Vehicle> vehicles;
     ArrayList<Tyre> tyres;
     ElectricMotor electricMotor;
     Engine engine;
@@ -60,37 +59,38 @@ public class DealershipTest {
 
         electricMotor = new ElectricMotor("350V", "170kW");
 
-        electricCar1 = new ElectricCar("Nissan", "Leaf", electricMotor, 16995,
-                "Red", "SP18 JKL", "12/06/18", tyres);
-        electricCar2 = new ElectricCar("Nissan", "Leaf", electricMotor, 15995,
-                "Blue", "SP18 JKL", "12/06/18", tyres);
+        electricCar1 = new ElectricCar("Nissan", "Leaf", 16995,
+                "Red", "SP18 JKL", "12/06/18", tyres, electricMotor);
+        electricCar2 = new ElectricCar("Nissan", "Leaf", 15995,
+                "Blue", "SP18 JKL", "12/06/18", tyres, electricMotor);
 
-        electricCars = new ArrayList<>();
-        electricCars.add(electricCar1);
-        electricCars.add(electricCar2);
+        vehicles = new ArrayList<>();
+
+        vehicles.add(electricCar1);
+        vehicles.add(electricCar2);
 
         engine = new Engine(1200, EngineType.PETROL);
 
-        car1 = new Car("Volkswagen", "Polo", engine, 13995, "Silver", "ST18 KLY", "04/05/18", tyres);
-        car2 = new Car("Volkswagen", "Polo", engine, 14995, "Black", "ST18 KLY", "04/05/18", tyres);
-        cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
+        car1 = new Car("Volkswagen", "Polo", 13995, "Silver",
+                "ST18 KLY", "04/05/18", tyres, engine);
+        car2 = new Car("Volkswagen", "Polo", 14995, "Black", "ST18 KLY",
+                "04/05/18", tyres, engine);
+        vehicles.add(car1);
+        vehicles.add(car2);
 
 
-        hybridCar1 = new HybridCar("Hyundai", "Ioniq", electricMotor, 12995,
-                "Green", "SP17 JKR", "12/03/17", engine, tyres);
+        hybridCar1 = new HybridCar("Hyundai", "Ioniq", 12995,
+                "Green", "SP17 JKR", "12/03/17", tyres, engine, electricMotor);
 //        hybridCar2 = new HybridCar("Hyundai", "Ioniq", electricMotor, 11995,
 //                "Yellow", "SP17 JKR", "12/03/17", engine, tyres);
-        hybridCars = new ArrayList<>();
-        hybridCars.add(hybridCar1);
-//        hybridCars.add(hybridCar2);
+        vehicles.add(hybridCar1);
+//        vehicles.add(hybridCar2);
 
-        dealership = new Dealership(dealer, till, cars, electricCars, hybridCars, customers);
+        dealership = new Dealership(dealer, till, vehicles, customers);
     }
 
     @Test
-    public void has2Cars(){
+    public void has2StandardCars(){
         assertEquals(2, dealership.numberOfCars());
     }
 

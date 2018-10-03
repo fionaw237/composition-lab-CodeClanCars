@@ -34,13 +34,14 @@ public class CustomerTest {
         tyres.add(tyre4);
 
         electricMotor = new ElectricMotor("350V", "170kW");
-        electricCar = new ElectricCar("Nissan", "Leaf", electricMotor, 16995,
-                "Red", "SP18 JKL", "12/06/18", tyres);
+        electricCar = new ElectricCar("Nissan", "Leaf", 16995,
+                "Red", "SP18 JKL", "12/06/18", tyres, electricMotor);
 
         customer = new Customer("A. Customer", "25 Some Street, Some Town", 20000,
                 new ArrayList());
         engine = new Engine(1200, EngineType.PETROL);
-        car = new Car("Volkswagen", "Polo", engine, 13995, "Silver", "ST18 KLY", "04/05/18", tyres);
+        car = new Car("Volkswagen", "Polo", 13995, "Silver", "ST18 KLY",
+                "04/05/18", tyres, engine);
 
     }
 
@@ -72,10 +73,27 @@ public class CustomerTest {
     }
 
     @Test
-    public void canBuyTwoDifferentTypesOfCar(){
+    public void buyingCarReducesFunds(){
         customer.buy(car);
-        customer.buy(electricCar);
-        assertEquals(2, customer.numberOfCarsOwned());
+        assertEquals(6005, customer.getFunds());
+    }
+
+    @Test
+    public void cantBuyCarIfNotEnoughFunds(){
+        customer.buy(car);
+        customer.buy(car);
+        assertEquals(6005, customer.getFunds());
+        assertEquals(1, customer.numberOfCarsOwned());
+    }
+
+    @Test
+    public void canBuyTwoDifferentTypesOfCar(){
+        Customer customer2 = new Customer("A. Customer", "25 Some Street, Some Town", 40000,
+                new ArrayList());
+        customer2.buy(car);
+        customer2.buy(electricCar);
+        assertEquals(2, customer2.numberOfCarsOwned());
+        assertEquals(9010, customer2.getFunds());
     }
 
     @Test

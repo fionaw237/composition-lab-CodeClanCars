@@ -31,18 +31,18 @@ public class HybridCarTest {
         tyres.add(tyre4);
         engine = new Engine(1200, EngineType.PETROL);
         electricMotor = new ElectricMotor("350V", "170kW");
-        hybridCar = new HybridCar("Hyundai", "Ioniq", electricMotor, 12995,
-                "Green", "SP17 JKR", "12/03/17", engine, tyres);
+        hybridCar = new HybridCar("Hyundai", "Ioniq", 12995,
+                "Green", "SP17 JKR", "12/03/17", tyres, engine, electricMotor);
     }
 
     @Test
-    public void canBePoweredByMotor(){
-        assertEquals(electricMotor, hybridCar.getEngineOrMotor());
+    public void hasMotor(){
+        assertEquals(electricMotor, hybridCar.getElectricMotor());
     }
 
     @Test
-    public void canBePoweredByEngine(){
-        assertEquals(engine, hybridCar.getSecondaryPowerSource());
+    public void hasEngine(){
+        assertEquals(engine, hybridCar.getEngine());
     }
 
     @Test

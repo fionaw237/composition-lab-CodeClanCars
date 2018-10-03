@@ -11,19 +11,13 @@ public class Dealership {
 
     private Dealer dealer;
     private Till till;
-    private ArrayList<Car> cars;
-    private ArrayList<ElectricCar> electricCars;
-    private ArrayList<HybridCar> hybridCars;
+    private ArrayList<Vehicle> vehicles;
     private ArrayList<Customer> customers;
 
-    public Dealership(Dealer dealer, Till till, ArrayList<Car> cars, ArrayList<ElectricCar> electricCars,
-                      ArrayList<HybridCar> hybridCars, ArrayList<Customer> customers) {
+    public Dealership(Dealer dealer, Till till, ArrayList<Vehicle> vehicles, ArrayList<Customer> customers) {
         this.dealer = dealer;
         this.till = till;
-        this.cars = cars;
-        this.electricCars = electricCars;
-        this.hybridCars = hybridCars;
-        this.customers = customers;
+        this.vehicles = vehicles;
     }
 
     public Dealer getDealer() {
@@ -35,19 +29,37 @@ public class Dealership {
     }
 
     public int numberOfCars(){
-        return this.cars.size();
+        int total = 0;
+        for (Vehicle vehicle : this.vehicles){
+            if (vehicle instanceof Car){
+                total ++;
+            }
+        }
+        return total;
     }
 
     public int numberOfElectricCars(){
-        return this.electricCars.size();
+        int total = 0;
+        for (Vehicle vehicle : this.vehicles){
+            if (vehicle instanceof ElectricCar){
+                total ++;
+            }
+        }
+        return total;
     }
 
     public int numberOfHybridCars(){
-        return this.hybridCars.size();
+        int total = 0;
+        for (Vehicle vehicle : this.vehicles){
+            if (vehicle instanceof HybridCar){
+                total ++;
+            }
+        }
+        return total;
     }
 
-//    public void sell(Vehicle vehicle, Customer customer) {
-//        customer.buy(vehicle);
-//        this.
-//    }
+    public void sell(Vehicle vehicle, Customer customer) {
+        customer.buy(vehicle);
+        this.vehicles.remove(vehicle);
+    }
 }

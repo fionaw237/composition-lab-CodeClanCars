@@ -38,8 +38,20 @@ public class Customer {
     }
 
     public void buy(Vehicle vehicle){
-        this.cars.add(vehicle);
+        if (canAfford(vehicle)){
+            this.cars.add(vehicle);
+            payForVehicle(vehicle);
+        }
     }
+
+    public void payForVehicle(Vehicle vehicle){
+        this.funds -= vehicle.getPrice();
+    }
+
+    public boolean canAfford(Vehicle vehicle){
+        return this.funds >= vehicle.getPrice();
+    }
+
 
     public void rent(Vehicle vehicle){
         this.rentalCars.add(vehicle);

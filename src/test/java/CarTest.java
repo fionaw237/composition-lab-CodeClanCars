@@ -27,12 +27,13 @@ public class CarTest {
         tyres.add(tyre3);
         tyres.add(tyre4);
         engine = new Engine(1200, EngineType.PETROL);
-        car = new Car("Volkswagen", "Polo", engine, 13995, "Silver", "ST18 KLY", "04/05/18", tyres);
+        car = new Car("Volkswagen", "Polo", 13995, "Silver",
+                "ST18 KLY", "04/05/18", tyres, engine);
     }
 
     @Test
     public void poweredByEngine(){
-        assertEquals(engine, car.getEngineOrMotor());
+        assertEquals(engine, car.getEngine());
     }
 //
 //    @Test

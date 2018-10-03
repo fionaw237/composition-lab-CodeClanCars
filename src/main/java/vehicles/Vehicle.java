@@ -9,7 +9,6 @@ public abstract class Vehicle {
 
     private String make;
     private String model;
-    private CanPowerVehicle poweredBy;
     private int price;
     private String colour;
     private String regNumber;
@@ -17,11 +16,10 @@ public abstract class Vehicle {
     private ArrayList<Tyre> tyres;
 
 
-    public Vehicle(String make, String model, CanPowerVehicle poweredBy, int price, String colour,
+    public Vehicle(String make, String model, int price, String colour,
                    String regNumber, String regDate, ArrayList<Tyre> tyres){
         this.make = make;
         this.model = model;
-        this.poweredBy = poweredBy;
         this.price = price;
         this.colour = colour;
         this.regNumber = regNumber;
@@ -35,10 +33,6 @@ public abstract class Vehicle {
 
     public String getModel() {
         return model;
-    }
-
-    public CanPowerVehicle getEngineOrMotor(){
-        return poweredBy;
     }
 
     public int getPrice() {

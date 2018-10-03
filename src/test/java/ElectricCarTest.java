@@ -26,13 +26,13 @@ public class ElectricCarTest {
         tyres.add(tyre3);
         tyres.add(tyre4);
         electricMotor = new ElectricMotor("350V", "170kW");
-        electricCar = new ElectricCar("Nissan", "Leaf", electricMotor, 16995,
-                "Red", "SP18 JKL", "12/06/18", tyres);
+        electricCar = new ElectricCar("Nissan", "Leaf", 16995,
+                "Red", "SP18 JKL", "12/06/18", tyres, electricMotor);
     }
 
     @Test
     public void poweredByMotor(){
-        assertEquals(electricMotor, electricCar.getEngineOrMotor());
+        assertEquals(electricMotor, electricCar.getElectricMotor());
     }
 
     @Test
