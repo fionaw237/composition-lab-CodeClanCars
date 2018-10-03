@@ -17,4 +17,5 @@ public class DealerTest {
     public void hasName(){
         assertEquals("Car Seller", dealer.getName());
     }
+
 }

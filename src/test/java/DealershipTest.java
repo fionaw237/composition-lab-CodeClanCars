@@ -42,8 +42,8 @@ public class DealershipTest {
         dealer = new Dealer("Car Seller");
 
         till = new Till(50000);
-        customer1 = new Customer("A. Customer", "25 Some Street, Some Town", 20000);
-        customer2 = new Customer("B. Customer", "25 Some Street, Some Town", 10000);
+        customer1 = new Customer("A. Customer", "25 Some Street, Some Town", 20000, new ArrayList<>());
+        customer2 = new Customer("B. Customer", "25 Some Street, Some Town", 10000, new ArrayList<>());
         customers = new ArrayList<>();
         customers.add(customer1);
         customers.add(customer2);
@@ -112,5 +112,12 @@ public class DealershipTest {
     @Test
     public void hasDealer(){
         assertEquals(dealer, dealership.getDealer());
+    }
+
+    @Test
+    public void canSellVehicle(){
+        dealership.sell(car1, customer1);
+        assertEquals(1, customer1.numberOfCarsOwned());
+        assertEquals(1, dealership.numberOfCars());
     }
 }

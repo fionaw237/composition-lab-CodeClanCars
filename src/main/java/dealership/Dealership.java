@@ -3,6 +3,7 @@ package dealership;
 import vehicles.Car;
 import vehicles.ElectricCar;
 import vehicles.HybridCar;
+import vehicles.Vehicle;
 
 import java.util.ArrayList;
 
@@ -45,5 +46,8 @@ public class Dealership {
         return this.hybridCars.size();
     }
 
-
+//    public void sell(Vehicle vehicle, Customer customer) {
+//        customer.buy(vehicle);
+//        this.
+//    }
 }
